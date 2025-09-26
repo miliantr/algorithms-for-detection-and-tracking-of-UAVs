@@ -1,0 +1,10 @@
+InfiniteTerrain
+Node
+CSGSphere3D
+CSGBox3D
+CollisionShape3D
+CharacterBody3D
+EditorPlugin
+Camera3D
+DirectionalLight3D      - Matches the "sun" keyword.
+GridMapEditorPlugin
