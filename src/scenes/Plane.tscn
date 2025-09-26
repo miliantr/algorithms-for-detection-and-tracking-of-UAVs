@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://beyui1bvrt4il"]
+
+[ext_resource type="PackedScene" uid="uid://ndtmh2lxl4tg" path="res://src/assets/models/airplane_dc3__dc3.glb" id="1_au2pq"]
+
+[node name="Plane" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_au2pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.255, -0.575)
