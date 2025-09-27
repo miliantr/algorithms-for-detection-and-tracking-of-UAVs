@@ -1,11 +1,15 @@
-AnimatableBody3D
-InfiniteTerrain
-Node
+WorldEnvironment
+Node3D
 CSGSphere3D
+CSGCylinder3D
+Camera3D
+DirectionalLight3D
+FogVolume
+InfiniteTerrain
+AnimatableBody3D
+Node
 CSGBox3D
 CollisionShape3D
 CharacterBody3D
 EditorPlugin
-Camera3D
 DirectionalLight3D      - Matches the "sun" keyword.
-GridMapEditorPlugin
