@@ -7,7 +7,7 @@ var pitch = 0.0
 func _ready() -> void:
 	$RLS.position = Vector3(0, 1, 0)
 	$Camera3D.position = Vector3(0, $RLS.position.y + 0.6, 0)
-
+	
 func _process(delta):
 	var horizontal = Input.get_axis("camera_left", "camera_right")
 	var vertical = Input.get_axis("camera_down", "camera_up")

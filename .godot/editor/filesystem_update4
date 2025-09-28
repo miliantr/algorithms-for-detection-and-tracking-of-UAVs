@@ -1,4 +1,9 @@
+res://main.tscn
+res://src/scenes/Plane.tscn
+res://src/scenes/Env.tscn
 res://src/scenes/RLS.tscn
+res://src/assets/models/rls.tscn
 res://src/scripts/camera_3d.gd
 res://src/scripts/rls.gd
-res://src/scenes/Env.tscn
+res://src/scripts/plane.gd
+res://src/scripts/main.gd
