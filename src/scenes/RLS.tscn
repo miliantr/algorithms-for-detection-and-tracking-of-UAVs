@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c38ku0vla0t0d"]
 
-[ext_resource type="Script" uid="uid://lorfam388hfi" path="res://src/scripts/rls.gd" id="1_7xjeh"]
-[ext_resource type="Script" uid="uid://gjm27m8ewbht" path="res://src/scripts/camera_3d.gd" id="2_mm31y"]
+[ext_resource type="Script" uid="uid://bakv7lhxj8wp7" path="res://src/scripts/rls.gd" id="1_7xjeh"]
+[ext_resource type="Script" uid="uid://0hdq1mbbafs1" path="res://src/scripts/camera_3d.gd" id="2_mm31y"]
 [ext_resource type="PackedScene" uid="uid://t47gffa4h3ij" path="res://src/assets/models/rls.tscn" id="2_xt2q6"]
 
 [node name="Rls" type="Node3D"]

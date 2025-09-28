@@ -7,5 +7,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Plane.position.z += delta * 10
+	$Plane.position.z += delta * 30
 	pass

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://beyui1bvrt4il"]
 
-[ext_resource type="PackedScene" uid="uid://ndtmh2lxl4tg" path="res://src/assets/models/airplane_dc3__dc3.glb" id="1_au2pq"]
+[ext_resource type="PackedScene" uid="uid://do6eal7fjfpi0" path="res://src/assets/models/airplane_dc3__dc3.glb" id="1_au2pq"]
 
 [node name="Plane" type="Node3D"]
 
