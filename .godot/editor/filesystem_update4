@@ -3,3 +3,5 @@ res://addons/SunshineVolumetricClouds/HeightWeightGradient.tres
 res://addons/SunshineVolumetricClouds/BaseNoiseTexture.tres
 res://addons/SunshineVolumetricClouds/BaseNoiseDetailTexture.tres
 res://addons/SunshineVolumetricClouds/BaseNoiseLargeScaleTexture.tres
+res://addons/SunshineVolumetricClouds/ExampleWorldEnvironment.tres
+res://addons/SunshineVolumetricClouds/CloudsTestScene.tscn
