@@ -1,3 +1,4 @@
 .godot
-icon.svg.import
-SunshineIcon.png.import
+*.import
+src/assets/models/*.import
+src/scripts/*.uid
