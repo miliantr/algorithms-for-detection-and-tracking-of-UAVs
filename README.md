@@ -5,6 +5,7 @@ Control
 
 W, A, S, D - Camera control
 
-MOUSE_BUTTON_WHEEL_DOWN - Zoom out
+MOUSE_BUTTON_WHEEL_UP | MOUSE_BUTTON_WHEEL_DOWN - Zoom in | Zoom out
 
-MOUSE_BUTTON_WHEEL_UP - Zoom in
+
+To enable clouds, switch to Forward+ mode.
