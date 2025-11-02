@@ -1,10 +1,5 @@
-[gd_scene format=3 uid="uid://b0xx3hck7jrh5"]
+[gd_scene format=3 uid="uid://gpmalsib6d67"]
 
 [node name="Camera" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.167341)
-radius = 0.05
-height = 0.3

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://borixqtspsibr"]
+[gd_scene load_steps=7 format=3 uid="uid://borixqtspsibr"]
 
 [ext_resource type="Script" uid="uid://dwkavj58b31nx" path="res://src/scripts/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c0er1e8ip7fft" path="res://src/scenes/Env.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c38ku0vla0t0d" path="res://src/scenes/RLS.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://beyui1bvrt4il" path="res://src/scenes/Plane.tscn" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://blgjlylphco5q" path="res://src/scripts/plane.gd" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cai4qdwcrn4ql" path="res://src/scenes/player.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_1bvp3")
@@ -13,3 +15,6 @@ script = ExtResource("1_1bvp3")
 [node name="Rls" parent="." instance=ExtResource("2_0xm2m")]
 
 [node name="Plane" parent="." instance=ExtResource("4_lquwl")]
+script = ExtResource("5_7mycd")
+
+[node name="Player" parent="." instance=ExtResource("5_lquwl")]

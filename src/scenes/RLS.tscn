@@ -1,13 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c38ku0vla0t0d"]
+[gd_scene load_steps=5 format=3 uid="uid://c38ku0vla0t0d"]
 
-[ext_resource type="Script" uid="uid://bakv7lhxj8wp7" path="res://src/scripts/rls.gd" id="1_7xjeh"]
-[ext_resource type="Script" uid="uid://0hdq1mbbafs1" path="res://src/scripts/camera_3d.gd" id="2_mm31y"]
+[ext_resource type="Script" uid="uid://4o5nxhnbhuyc" path="res://src/scripts/rls.gd" id="1_xt2q6"]
 [ext_resource type="PackedScene" uid="uid://t47gffa4h3ij" path="res://src/assets/models/rls.tscn" id="2_xt2q6"]
+[ext_resource type="PackedScene" uid="uid://q2387xun8r3n" path="res://src/assets/cone.tscn" id="3_mm31y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mm31y"]
+height = 0.5
 
 [node name="Rls" type="Node3D"]
-script = ExtResource("1_7xjeh")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-script = ExtResource("2_mm31y")
+script = ExtResource("1_xt2q6")
 
 [node name="RLS" parent="." instance=ExtResource("2_xt2q6")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-100, 8.74228e-06, 0, 3.82137e-13, 4.37114e-06, -100, -8.74228e-06, -100, -4.37114e-06, 2.24106e-06, 1.12053e-06, -25.6348)
+shape = SubResource("CylinderShape3D_mm31y")
+
+[node name="cone" parent="." instance=ExtResource("3_mm31y")]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, 0, -0.529076)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://q2387xun8r3n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td2y6"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0980392)
+
+[node name="cone" type="Node3D"]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 1)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 20
+material = SubResource("StandardMaterial3D_td2y6")

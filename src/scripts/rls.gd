@@ -1,23 +1,26 @@
 extends Node3D
 
-var rotation_speed = 1.0
-var yaw = 0.0
-var pitch = 0.0
+var planeIn
+var planeBody
 
+
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$RLS.position = Vector3(0, 1, 0)
-	$Camera3D.position = Vector3(0, $RLS.position.y + 0.6, 0)
-	
-func _process(delta):
-	var horizontal = Input.get_axis("camera_left", "camera_right")
-	var vertical = Input.get_axis("camera_down", "camera_up")
-	
-	
-	yaw += horizontal * rotation_speed * delta
-	pitch += vertical * rotation_speed * delta
-	pitch = clamp(pitch, -PI/2, PI/2)
-	
-	# Родитель поворачивается по Y (влево-вправо)
-	rotation.y = yaw
-	# Камера поворачивается по X (вверх-вниз)
-	$Camera3D.rotation.x = pitch
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if planeIn:
+		look_at(planeBody.global_position, Vector3.UP)
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	planeBody = body
+	planeIn = 1
+	print("detected")
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	planeIn = 0
+	print("undetected")
