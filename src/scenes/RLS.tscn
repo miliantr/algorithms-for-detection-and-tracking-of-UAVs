@@ -12,14 +12,15 @@ script = ExtResource("1_xt2q6")
 
 [node name="RLS" parent="." instance=ExtResource("2_xt2q6")]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="cone" parent="." instance=ExtResource("3_mm31y")]
+transform = Transform3D(50, 0, 0, 0, 35.3553, 35.3553, 0, -35.3553, 35.3553, 0, 0, -0.529076)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="Area3D" type="Area3D" parent="cone"]
+transform = Transform3D(0.02, 0, 0, 0, -8.74228e-10, -0.02, 0, 0.02, -8.74228e-10, 0, -0.0105815, -4.62533e-10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cone/Area3D"]
 transform = Transform3D(-100, 8.74228e-06, 0, 3.82137e-13, 4.37114e-06, -100, -8.74228e-06, -100, -4.37114e-06, 2.24106e-06, 1.12053e-06, -25.6348)
 shape = SubResource("CylinderShape3D_mm31y")
 
-[node name="cone" parent="." instance=ExtResource("3_mm31y")]
-transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, 0, -0.529076)
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="cone/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="cone/Area3D" to="." method="_on_area_3d_body_exited"]
