@@ -22,5 +22,8 @@ transform = Transform3D(0.02, 0, 0, 0, -8.74228e-10, -0.02, 0, 0.02, -8.74228e-1
 transform = Transform3D(-100, 8.74228e-06, 0, 3.82137e-13, 4.37114e-06, -100, -8.74228e-06, -100, -4.37114e-06, 2.24106e-06, 1.12053e-06, -25.6348)
 shape = SubResource("CylinderShape3D_mm31y")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.91706, -0.398749, 0, 0.398749, 0.91706, 0, 0, 0)
+
 [connection signal="body_entered" from="cone/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="cone/Area3D" to="." method="_on_area_3d_body_exited"]

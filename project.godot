@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SunshineVolumetricClouds/plugin.cfg", "res://addons/infinite_heightmap_terrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/SunshineVolumetricClouds/plugin.cfg", "res://addons/infinite_heightmap_terrain/plugin.cfg", "res://addons/py4godot/plugin.cfg")
 
 [input]
 

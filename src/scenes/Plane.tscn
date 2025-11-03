@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://do6eal7fjfpi0" path="res://src/assets/models/airplane_dc3__dc3.glb" id="1_au2pq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_au2pq"]
-size = Vector3(2.84821, 0.519135, 1.95361)
+size = Vector3(1.99806, 0.310471, 1.59973)
 
 [node name="Plane" type="Node3D"]
 
@@ -14,4 +14,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.255, -0.575)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, 0.0964203, -0.106201)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0024333, -0.104332, 0.0498653)
 shape = SubResource("BoxShape3D_au2pq")

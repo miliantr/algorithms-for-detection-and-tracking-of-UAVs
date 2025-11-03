@@ -7,8 +7,6 @@ var max_fov = 5.0
 
 func _ready() -> void:
 	fov = base_fov
-	#far = 1000.0
-	#near = 5.0
 
 func _input(event):
 	if event is InputEventMouseButton:
