@@ -18,5 +18,3 @@ script = ExtResource("1_1bvp3")
 script = ExtResource("5_7mycd")
 
 [node name="Player" parent="." instance=ExtResource("5_lquwl")]
-
-[node name="SubViewport" type="SubViewport" parent="."]
