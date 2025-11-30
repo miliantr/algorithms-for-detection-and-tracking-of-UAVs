@@ -1,0 +1,43 @@
+Для передачи PNG-изображения через сокеты в Godot необходимо выполнить следующие шаги: сначала загрузить изображение как ресурс, затем преобразовать его в байтовый массив (например, с помощью FileAccess.get_file_as_bytes() или Image.save_png_to_buffer()), после чего отправить эти байты по сетевому соединению (используя StreamPeerTCP или другой класс сокетов). При получении необходимо прочитать байты из сокета и восстановить изображение, используя Image.create_from_buffer(). 
+Отправка PNG
+Загрузите изображение:
+Загрузите файл PNG как ресурс в Godot: var texture = load("res://path/to/image.png").
+Конвертируйте в байтовый массив:
+Создайте объект Image из текстуры: var image = texture.get_image().
+Сохраните изображение в буфер как PNG-байты: var buffer = image.save_png_to_buffer().
+Отправьте данные по сокету:
+Используйте StreamPeerTCP для отправки:
+Подключитесь к серверу: peer.connect_to_host(host, port).
+Отправьте размер буфера, чтобы принимающая сторона знала, сколько данных ожидать: peer.put_u32(buffer.size()).
+Отправьте сам буфер: peer.put_data(buffer). 
+Получение PNG
+Получите данные по сокету:
+Используйте StreamPeerTCP для приема:
+Примите размер буфера: var buffer_size = peer.get_u32().
+Получите сам буфер: var buffer = peer.get_data(buffer_size).
+Восстановите изображение:
+Создайте новый объект Image: var new_image = Image.new().
+Создайте изображение из полученного буфера: new_image.create_from_buffer(buffer, width, height, format).
+Подобрав правильные параметры width, height и format, можно восстановить изображение. format можно узнать из переданных данных или установить как Image.FORMAT_RGB8 или Image.FORMAT_RGBA8. 
+
+
+
+var image = Image.new()
+image.load("res://path/to/image.png")
+var buffer = image.save_png_to_buffer()
+
+var peer = StreamPeerTCP.new()
+peer.connect_to_host("127.0.0.1", 4444)
+
+peer.put_u32(buffer.size())
+peer.put_data(buffer)
+
+
+var peer = StreamPeerTCP.new()
+peer.listen(4444)
+
+var buffer_size = peer.get_u32()
+var buffer = peer.get_data(buffer_size)
+
+var image = Image.new()
+image.create_from_buffer(buffer, 100, 100, Image.FORMAT_RGB8) # Замените 100x100 на реальные размеры

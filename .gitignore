@@ -4,3 +4,5 @@ src/assets/models/*.import
 src/scripts/*.uid
 img/*.png
 img/*.import
+src/scripts/__pycache__
+src/assets/ref/*.uid

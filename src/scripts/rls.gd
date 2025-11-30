@@ -25,11 +25,12 @@ func _process(delta: float) -> void:
 		look_at(planeBody.global_position, Vector3.UP)
 	if not planeIn:
 		$SubViewport/Camera3D.rotate(Vector3(0, 1, 0), delta)
+		
 	await RenderingServer.frame_post_draw
 	time_since_last_save += delta
 	if time_since_last_save >= save_interval:
 		var image = $SubViewport.get_texture().get_image()
-		var filename = "res://img/image%04d.jpg" % frame_count
+		#var filename = "res://img/image%04d.jpg" % frame_count
 		#image.save_jpg(filename)
 		var jpg_bytes: PackedByteArray = image.save_jpg_to_buffer()
 		client_socket.put_data(jpg_bytes)
@@ -38,7 +39,7 @@ func _process(delta: float) -> void:
 		time_since_last_save = 0.0
 		
 
-func data_resive() -> void:
+func data_receive() -> void:
 	# Receive data
 	client_socket.poll() # Important: Poll to update connection status and receive data
 	if client_socket.get_available_bytes() > 0:
