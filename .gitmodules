@@ -1,0 +1,3 @@
+[submodule "soc-cv2"]
+	path = soc-cv2
+	url = https://github.com/miliantr/soc-cv2.git
