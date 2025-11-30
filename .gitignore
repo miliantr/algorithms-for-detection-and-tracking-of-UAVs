@@ -2,3 +2,5 @@
 *.import
 src/assets/models/*.import
 src/scripts/*.uid
+img/*.png
+img/*.import

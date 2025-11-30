@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c38ku0vla0t0d"]
+[gd_scene load_steps=3 format=3 uid="uid://c38ku0vla0t0d"]
 
 [ext_resource type="Script" uid="uid://4o5nxhnbhuyc" path="res://src/scripts/rls.gd" id="1_xt2q6"]
-[ext_resource type="PackedScene" uid="uid://q2387xun8r3n" path="res://src/assets/cone.tscn" id="3_mm31y"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mm31y"]
 height = 0.5
@@ -13,19 +12,16 @@ script = ExtResource("1_xt2q6")
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.91706014, -0.39874905, 0, 0.39874905, 0.91706014, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.91706, -0.398749, 0, 0.398749, 0.91706, 0, 0, 0)
 fov = 90.0
 near = 1.0
 
-[node name="cone" parent="." instance=ExtResource("3_mm31y")]
-transform = Transform3D(50, 0, 0, 0, 35.3553, 35.3553, 0, -35.3553, 35.3553, 0, 0, -0.529076)
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707106, -0.707106, 0, 0.707106, 0.707106, 0, -0.374112, -0.154964)
 
-[node name="Area3D" type="Area3D" parent="cone"]
-transform = Transform3D(0.02, 0, 0, 0, -8.74228e-10, -0.02, 0, 0.02, -8.74228e-10, 0, -0.0105815, -4.62533e-10)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cone/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-100, 8.74228e-06, 0, 3.82137e-13, 4.37114e-06, -100, -8.74228e-06, -100, -4.37114e-06, 2.24106e-06, 1.12053e-06, -25.6348)
 shape = SubResource("CylinderShape3D_mm31y")
 
-[connection signal="body_entered" from="cone/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="cone/Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
