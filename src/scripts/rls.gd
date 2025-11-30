@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		time_since_last_save = 0.0
 		
 
-func data_resive():
+func data_resive() -> void:
 	# Receive data
 	client_socket.poll() # Important: Poll to update connection status and receive data
 	if client_socket.get_available_bytes() > 0:
