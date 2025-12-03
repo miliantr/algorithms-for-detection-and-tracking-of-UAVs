@@ -1,10 +1,7 @@
 extends Node3D
 
-const SERVER_IP = "127.0.0.1" # Replace with your server's IP
-const SERVER_PORT = 8888 # Replace with your server's port
-
-@onready var client_socket: StreamPeerTCP = StreamPeerTCP.new()
-@onready var error = client_socket.connect_to_host(SERVER_IP, SERVER_PORT)
+const SERVER_IP = "127.0.0.1"
+const SERVER_PORT = 8888
 
 var planeIn
 var planeBody
@@ -14,40 +11,41 @@ var frame_count = 0
 var save_interval = 0.5
 var time_since_last_save = 0.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var udp := PacketPeerUDP.new()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready():
+	udp.set_dest_address(SERVER_IP, SERVER_PORT)
+
 func _process(delta: float) -> void:
-	
 	if planeIn:
 		look_at(planeBody.global_position, Vector3.UP)
 	if not planeIn:
 		$SubViewport/Camera3D.rotate(Vector3(0, 1, 0), delta)
-		
+
 	await RenderingServer.frame_post_draw
+
 	time_since_last_save += delta
 	if time_since_last_save >= save_interval:
-		var image = $SubViewport.get_texture().get_image()
-		#var filename = "res://img/image%04d.jpg" % frame_count
-		#image.save_jpg(filename)
-		var jpg_bytes: PackedByteArray = image.save_jpg_to_buffer()
-		client_socket.put_data(jpg_bytes)
-		
+		send_frame()
 		frame_count += 1
 		time_since_last_save = 0.0
-		
 
-func data_receive() -> void:
-	# Receive data
-	client_socket.poll() # Important: Poll to update connection status and receive data
-	if client_socket.get_available_bytes() > 0:
-		var received_data_array = client_socket.get_data(client_socket.get_available_bytes())
-		if received_data_array[0] == OK:
-			var received_message = (received_data_array[1] as PackedByteArray).get_string_from_ascii()
-			print("Received data: ", received_message)
 
+func send_frame():
+	var image = $SubViewport.get_texture().get_image()
+	var jpg_bytes: PackedByteArray = image.save_jpg_to_buffer()  # можно качество уменьшить
+	var size = jpg_bytes.size()
+
+	if size > 65507 - 4:
+		print("Frame too large for UDP, skipping:", size)
+		return
+
+	var buffer := StreamPeerBuffer.new()
+	buffer.put_32(size)         # первые 4 байта = размер
+	buffer.put_data(jpg_bytes)   # JPEG
+	udp.put_packet(buffer.get_data_array())
+
+	#print("Sent frame %d, size %d bytes" % [frame_count, size])
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	planeBody = body
