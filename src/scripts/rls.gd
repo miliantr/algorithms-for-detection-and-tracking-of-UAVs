@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 
 func send_frame():
 	var image = $SubViewport.get_texture().get_image()
-	var jpg_bytes: PackedByteArray = image.save_jpg_to_buffer()  # можно качество уменьшить
+	var jpg_bytes: PackedByteArray = image.save_jpg_to_buffer()
 	var size = jpg_bytes.size()
 
 	if size > 65507 - 4:
@@ -41,8 +41,8 @@ func send_frame():
 		return
 
 	var buffer := StreamPeerBuffer.new()
-	buffer.put_32(size)         # первые 4 байта = размер
-	buffer.put_data(jpg_bytes)   # JPEG
+	buffer.put_32(size) # первые 4 байта = размер
+	buffer.put_data(jpg_bytes) # JPEG
 	udp.put_packet(buffer.get_data_array())
 
 	#print("Sent frame %d, size %d bytes" % [frame_count, size])
