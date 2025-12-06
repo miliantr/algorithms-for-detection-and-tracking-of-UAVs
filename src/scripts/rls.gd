@@ -22,12 +22,12 @@ func _ready():
 	udp.set_dest_address(SERVER_IP, SERVER_PORT)
 
 func _process(delta: float) -> void:
-	if planeIn:
-		look_at(planeBody.global_position, Vector3.UP)
-		$Camera3D.look_at(planeBody.global_position, Vector3.UP)
-	if not planeIn:
-		$SubViewport/Camera3D.rotate(Vector3(0, 1, 0), delta)
-		$Camera3D.rotate(Vector3(0, 1, 0), delta)
+	#if planeIn:
+		#look_at(planeBody.global_position, Vector3.UP)
+		#$Camera3D.look_at(planeBody.global_position, Vector3.UP)
+	#if not planeIn:
+		#$SubViewport/Camera3D.rotate(Vector3(0, 1, 0), delta)
+		#$Camera3D.rotate(Vector3(0, 1, 0), delta)
 
 	await RenderingServer.frame_post_draw
 
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	if time_since_last_save >= save_interval:
 		send_frame()
 		$Camera3D/ReferenceRect.set_position(Vector2(x, y))
-		$Camera3D/ReferenceRect.set_size(Vector2(h, w))
+		$Camera3D/ReferenceRect.set_size(Vector2(w, h))
 		frame_count += 1
 		time_since_last_save = 0.0
 
