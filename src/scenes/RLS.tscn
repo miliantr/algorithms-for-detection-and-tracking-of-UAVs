@@ -12,8 +12,7 @@ script = ExtResource("1_xt2q6")
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.91706, -0.398749, 0, 0.398749, 0.91706, 0, 0, 0)
-current = true
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 fov = 90.0
 near = 1.0
 
@@ -23,6 +22,14 @@ transform = Transform3D(1, 0, 0, 0, 0.707106, -0.707106, 0, 0.707106, 0.707106, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-100, 8.74228e-06, 0, 3.82137e-13, 4.37114e-06, -100, -8.74228e-06, -100, -4.37114e-06, 2.24106e-06, 1.12053e-06, -25.6348)
 shape = SubResource("CylinderShape3D_mm31y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 90.0
+near = 1.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Camera3D"]
+editor_only = false
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
